@@ -1,0 +1,56 @@
+.header {
+    padding: 1rem 1.5rem; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2A7AAD;
+  }
+  
+  .logo {
+    height: 2.5rem; 
+  }
+  
+  .buttons {
+    button {
+    
+      font-weight: 600;
+      padding: 0.5rem 1rem; 
+      border-radius: 0.25rem; 
+      margin-right: 1rem; 
+      cursor: pointer;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+.signup{
+    background-color: #fff;
+    color: #2A7AAD; 
+    width: 6rem;
+    border: 2px solid #2A7AAD;
+  }
+
+  .logout{
+    background-color: #2A7AAD;
+    color: #fff; 
+    width: 6rem;
+    border: 2px solid #fff;
+  }
+  
+
+  .logout:hover{
+    background-color: #fff;
+    color: #2A7AAD; 
+    width: 6rem;
+    border: 2px solid #2A7AAD;
+  }
+
+  .signup:hover{
+    background-color: #2A7AAD;
+    color: #fff; 
+    width: 6rem;
+    border: 2px solid #fff;
+  }
+
+

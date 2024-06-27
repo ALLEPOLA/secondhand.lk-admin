@@ -1,0 +1,77 @@
+<div class="profile-settings">
+  <div class="settings-card">
+    <strong>Profile Settings</strong>
+
+    <!-- Admin Name Input -->
+    <div class="input-container">
+      <label for="adminName">Admin Name:</label>
+      <div class="info-container">
+        <div *ngIf="!isEditingName" class="info">{{ adminData.user_name }}</div>
+        <input *ngIf="isEditingName" [(ngModel)]="adminData.user_name" id="adminName" class="info" />
+        <a (click)="toggleEdit('name')" class="edit-link">
+          {{ isEditingName ? 'Save' : 'Edit' }}
+        </a>
+      </div>
+    </div>
+
+    <!-- Admin Email Input -->
+    <div class="input-container">
+      <label for="adminEmail">Admin Email:</label>
+      <div class="info-container">
+        <div *ngIf="!isEditingEmail" class="info">{{ adminData.email }}</div>
+        <input *ngIf="isEditingEmail" [(ngModel)]="adminData.email" id="adminEmail" class="info" />
+        <a (click)="toggleEdit('email')" class="edit-link">
+          {{ isEditingEmail ? 'Save' : 'Edit' }}
+        </a>
+      </div>
+    </div>
+
+    <!-- Change Password Link/Button -->
+    <div class="input-container">
+      <label>Change Password:</label>
+      <a class="edit-link" (click)="toggleChangePassword()">Change Password</a>
+    </div>
+
+    <!-- Modal for changing password -->
+    <div class="modal" *ngIf="isChangingPassword">
+      <div class="modal-content">
+        <span class="close" (click)="toggleChangePassword()">&times;</span>
+        <div class="input-container">
+          <label for="oldPassword">Old Password:</label>
+          <div class="password-container">
+            <input [type]="showOldPassword ? 'text' : 'password'" [(ngModel)]="passwordData.oldPassword" id="oldPassword" class="info" />
+            <i class="fa" [ngClass]="showOldPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="toggleShowPassword('old')"></i>
+          </div>
+        </div>
+        <div class="input-container">
+          <label for="newPassword">New Password:</label>
+          <div class="password-container">
+            <input [type]="showNewPassword ? 'text' : 'password'" [(ngModel)]="passwordData.newPassword" id="newPassword" class="info" />
+            <i class="fa" [ngClass]="showNewPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="toggleShowPassword('new')"></i>
+          </div>
+        </div>
+        <div class="input-container">
+          <label for="confirmNewPassword">Confirm New Password:</label>
+          <div class="password-container">
+            <input [type]="showConfirmNewPassword ? 'text' : 'password'" [(ngModel)]="passwordData.confirmNewPassword" id="confirmNewPassword" class="info" />
+            <i class="fa" [ngClass]="showConfirmNewPassword ? 'fa-eye-slash' : 'fa-eye'" (click)="toggleShowPassword('confirm')"></i>
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="confirm-button" (click)="changePassword()">Confirm</button>
+          <button class="cancel-button" (click)="toggleChangePassword()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirm and Cancel Buttons -->
+    <div class="button-container">
+      <button class="confirm-button" [disabled]="!isFormEdited" (click)="updateAdminData()">Confirm</button>
+      <button class="cancel-button" (click)="resetForm()">Cancel</button>
+    </div>
+
+    <div *ngIf="message" [ngClass]="{'error-message': isError, 'success-message': !isError}">
+      {{ message }}
+    </div>
+  </div>
+</div>

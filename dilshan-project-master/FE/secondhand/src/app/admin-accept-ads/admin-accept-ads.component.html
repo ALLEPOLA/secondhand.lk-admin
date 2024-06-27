@@ -1,0 +1,70 @@
+<div *ngIf="loading" class="loading-overlay">
+    <div class="spinner-container">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading...</div>
+    </div>
+  </div>
+<div class="ad-container">
+  <div class="ad-card" *ngFor="let ad of displayedAds">
+      <div class="ad-header">
+          <h3>{{ ad.title }}</h3>
+          <span>{{ ad.price }}</span>
+      </div>
+      <div class="ad-body">
+          <p><strong>Type:</strong> {{ ad.adType }}</p>
+          <p><strong>Category:</strong> {{ ad.category }}</p>
+          <p><strong>Location:</strong> {{ ad.location }}</p>
+          <p><strong>Created by:</strong> {{ ad.created_user }}</p>
+          <div class="ad-images">
+              <img *ngIf="ad.image_url" [src]="ad.image_url" alt="Ad Image">
+          </div>
+      </div>
+      <div class="ad-footer">
+          <button class="btn btn-primary" (click)="viewMore(ad)">View More</button>
+      </div>
+  </div>
+</div>
+
+<div class="pagination">
+  <button 
+      class="btn btn-secondary" 
+      [disabled]="currentPage === 1" 
+      (click)="goToPage(currentPage - 1)">
+      <i class="fa-solid fa-chevron-left"></i> Previous
+  </button>
+  <span>Page {{ currentPage }}</span>
+  <button 
+      class="btn btn-secondary" 
+      [disabled]="currentPage * adsPerPage >= ads.length" 
+      (click)="goToPage(currentPage + 1)">
+      Next <i class="fa-solid fa-chevron-right"></i>
+  </button>
+</div>
+
+<!-- Popup for detailed view -->
+<div class="popup" *ngIf="showPopup">
+  <div class="popup-content">
+      <div class="popup-header">
+          <h2>{{ selectedAd.title }}</h2>
+          <span class="close" (click)="closePopup()">&times;</span>
+      </div>
+      <div class="popup-body">
+          <div class="popup-details">
+              <p><strong>Type:</strong> {{ selectedAd.adType }}</p>
+              <p><strong>Category:</strong> {{ selectedAd.category }}</p>
+              <p><strong>Subcategory:</strong> {{ selectedAd.subcategory }}</p>
+              <p><strong>Location:</strong> {{ selectedAd.location }}</p>
+              <p><strong>Sublocation:</strong> {{ selectedAd.sublocation }}</p>
+              <p><strong>Created by:</strong> {{ selectedAd.created_user }}</p>
+              <p><strong>Price:</strong> {{ selectedAd.price }}</p>
+          </div>
+          <div class="popup-image" *ngIf="selectedAd.image_url">
+              <img [src]="selectedAd.image_url" alt="Ad Image">
+          </div>
+      </div>
+      <div class="popup-footer">
+          <!-- <button class="btn btn-success" (click)="acceptAd(selectedAd.ad_id)">Accept</button> -->
+          <button class="btn btn-danger" (click)="rejectAd(selectedAd.ad_id)">Reject</button>
+      </div>
+  </div>
+</div>

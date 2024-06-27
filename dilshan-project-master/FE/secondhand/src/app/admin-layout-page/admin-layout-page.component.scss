@@ -1,0 +1,22 @@
+.admin-layout{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.admin-layout-content{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-side-menu{
+  width: auto;
+}
+
+.admin-outlet{
+  padding: 2%;
+  width: 100%;
+}

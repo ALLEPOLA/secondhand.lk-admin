@@ -1,0 +1,36 @@
+<div class="admin-login-component">
+  <div class="login-card">
+    <div class="login-img">
+      <img src="../../assets/Moderator.jpg" alt="image-not-found">
+    </div>
+    <div class="login-form">
+      <strong>Moderator Login</strong>
+      <div class="input-container">
+        <i class="fas fa-envelope"></i>
+        <input
+          type="text"
+          [placeholder]="emailPlaceholder"
+          (focus)="onFocus('email')"
+          (blur)="onBlur('email')"
+          [(ngModel)]="email"
+          (ngModelChange)="validateEmail()"
+        />
+       
+      </div>
+      <span *ngIf="!emailValid" class="error-message">Please enter a valid email.</span>
+      <div class="input-container">
+        <i class="fas fa-lock"></i>
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          [placeholder]="passwordPlaceholder"
+          (focus)="onFocus('password')"
+          (blur)="onBlur('password')"
+          [(ngModel)]="password"
+        />
+        <i class="fas" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword" (click)="togglePasswordVisibility()"></i>
+      </div>
+      <button class="login-button" (click)="login()">Login</button>
+      <a routerLink="/forgetpassword">Forgot Password?</a>
+    </div>
+  </div>
+</div>

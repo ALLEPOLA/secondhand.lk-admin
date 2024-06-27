@@ -1,0 +1,12 @@
+<div class="admin-enter-otp-component">
+  <div class="enter-otp-card">
+    <strong>Enter Your OTP</strong>
+    <div class="otp-input-container">
+      <input type="text" maxlength="6"
+             [(ngModel)]="otp"
+             (input)="onInput($event)"
+             (keydown)="onKeyDown($event)" />
+    </div>
+    <button class="submit-otp-button" (click)="submitOtp()">Submit OTP</button>
+  </div>
+</div>

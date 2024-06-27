@@ -1,0 +1,27 @@
+/* styles.scss or your global stylesheet */
+.chart-container {
+  width: 80%; /* Adjusted width */
+  margin: 30px auto; /* Margin for spacing */
+  padding: 50px;
+  height: 400px; /* Adjusted height */
+  background-color: #ffffff; /* White background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Box shadow for effect */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centered content */
+}
+
+.chart-container h2 {
+  color: #304E74;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 15px; 
+  font-size: 24px; 
+  font-weight: 600; 
+}
+
+.chart-container canvas {
+  width: 100%; 
+  height: 100%; 
+}

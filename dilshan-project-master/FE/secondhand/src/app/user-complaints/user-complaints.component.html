@@ -1,0 +1,33 @@
+<table>
+  <thead>
+    <tr>
+      <th>Ad ID</th>
+      <th>User ID</th>
+      <th>Total Complaints</th>
+      <th>Latest Complaint Date</th>
+      <th>Complaint Type</th>
+      <th>Complaint Description</th>
+      <th>Earliest Complaint Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let complaint of complaints">
+      <td>{{ complaint.advertisement_id }}</td>
+      <td>{{ complaint.user_id }}</td>
+      <td>{{ complaint.total_complaints }}</td>
+      <td>{{ complaint.latest_complaint_date }}</td>
+      <td>{{ complaint.complaint_type }}</td>
+      <td>{{ complaint.complaint_description }}</td>
+      <td>{{ complaint.earliest_complaint_date }}</td>
+      <td><button (click)="showPopup()">View</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="popup-overlay" [ngClass]="{'show': isPopupVisible}" (click)="closePopup()"></div>
+<div class="popup" [ngClass]="{'show': isPopupVisible}">
+  <p>Are you sure you want to ban this AD?</p>
+  <button class="ban-user" (click)="banUser()">Ban AD</button>
+  <button class="cancel" (click)="closePopup()">Cancel</button>
+</div>

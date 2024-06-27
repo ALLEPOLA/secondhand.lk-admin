@@ -1,0 +1,112 @@
+<div class="side-nav-component" [ngClass]="{ 'collapsed': isCollapsed }">
+  <div class="toggle-icon" (click)="toggleCollapse()">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+  <div class="nav-menu">
+    <div class="menu-item" (mouseenter)="showHoverMenu('dashboard')" (mouseleave)="hideHoverMenu('dashboard')">
+      <div class="title" (click)="toggleSubmenu('dashboard')">
+        <i class="fa-solid fa-house"></i>
+        <p *ngIf="!isCollapsed"><a routerLink="/admin/dashboard">Dashboard</a></p>
+      </div>
+    </div>
+
+    <div class="menu-item" (mouseenter)="showHoverMenu('advertisement')" (mouseleave)="hideHoverMenu('advertisement')">
+      <div class="title" (click)="toggleSubmenu('advertisement')">
+        <i class="fa-solid fa-bullhorn"></i>
+        <p *ngIf="!isCollapsed">Advertisement</p>
+        <i *ngIf="!isCollapsed" class="fa-solid" [ngClass]="{ 'fa-chevron-right': !showSubmenu['advertisement'], 'fa-chevron-down': showSubmenu['advertisement'] }"></i>
+      </div>
+      <div class="sub-menu" *ngIf="showSubmenu['advertisement'] && !isCollapsed">
+        <div class="sub-menu-item">
+          <i class="fa-solid fa-circle-plus"></i>
+          <p><a routerLink="/admin/newads">New Ads</a></p>
+        </div>
+        <div class="sub-menu-item">
+          <i class="fa-solid fa-ban"></i>
+          <p><a routerLink="/admin/blockedads">Blocked Ads</a></p>
+        </div>
+        <div class="sub-menu-item">
+          <i class="fa-solid fa-check"></i>
+          <p><a routerLink="/admin/acceptedads">Accepted Ads</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-item" (mouseenter)="showHoverMenu('chat')" (mouseleave)="hideHoverMenu('chat')">
+      <div class="title" (click)="toggleSubmenu('chat')">
+     <i class="fa-solid fa-comments"></i>
+
+        <p *ngIf="!isCollapsed">chat</p>
+        <i *ngIf="!isCollapsed" class="fa-solid" [ngClass]="{ 'fa-chevron-right': !showSubmenu['chat'], 'fa-chevron-down': showSubmenu['chat'] }"></i>
+      </div>
+      <div class="sub-menu" *ngIf="showSubmenu['chat'] && !isCollapsed">
+        <div class="sub-menu-item">
+          <i class="fa-solid fa-eye"></i>
+          <a routerLink="/admin/chat"><p>chat Request</p></a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="menu-item" (mouseenter)="showHoverMenu('userComplaints')" (mouseleave)="hideHoverMenu('userComplaints')">
+      <div class="title" (click)="toggleSubmenu('userComplaints')">
+        <i class="fa-solid fa-exclamation-circle"></i>
+        <p *ngIf="!isCollapsed">User Complaints</p>
+        <i *ngIf="!isCollapsed" class="fa-solid" [ngClass]="{ 'fa-chevron-right': !showSubmenu['userComplaints'], 'fa-chevron-down': showSubmenu['userComplaints'] }"></i>
+      </div>
+      <div class="sub-menu" *ngIf="showSubmenu['userComplaints'] && !isCollapsed">
+        <div class="sub-menu-item">
+          <i class="fa-solid fa-eye"></i>
+          <a routerLink="/admin/usercomplaints"><p>View Complaints</p></a>
+        </div>
+      </div>
+    </div>
+
+   <!-- admin-side-navigation.component.html -->
+<!-- admin-side-navigation.component.html -->
+<div class="menu-item" (mouseenter)="showHoverMenu('systemAnalysis')" (mouseleave)="hideHoverMenu('systemAnalysis')">
+  <div class="title" (click)="toggleSubmenu('systemAnalysis')">
+    <i class="fa-solid fa-chart-line"></i>
+    <p *ngIf="!isCollapsed">System Analysis</p>
+    <i *ngIf="!isCollapsed" class="fa-solid" [ngClass]="{ 'fa-chevron-right': !showSubmenu['systemAnalysis'], 'fa-chevron-down': showSubmenu['systemAnalysis'] }"></i>
+  </div>
+  <div class="sub-menu" *ngIf="showSubmenu['systemAnalysis'] && !isCollapsed">
+    <div class="sub-menu-item">
+      <i class="fa-solid fa-chart-bar"></i>
+      <p><a routerLink="/admin/adcategoryanalysis">Ad Category Analysis</a></p>
+    </div>
+    <div class="sub-menu-item">
+      <i class="fa-solid fa-chart-pie"></i>
+      <p><a routerLink="/admin/adstatusanalysis">Ad Status Analysis</a></p>
+    </div>
+    <div class="sub-menu-item">
+      <i class="fa-solid fa-chart-area"></i>
+      <p><a routerLink="/admin/dailyadcount">Daily Ad Count</a></p>
+    </div>
+    <div class="sub-menu-item">
+      <i class="fa-solid fa-chart-pie"></i>
+      <p><a routerLink="/admin/userrating">User Ratings</a></p>
+    </div>
+    <div class="sub-menu-item">
+      <i class="fa-solid fa-chart-pie"></i>
+      <p><a routerLink="/admin/adcountbylocation">Ad Count By Location</a></p> <!-- Corrected link here -->
+    </div>
+  </div>
+</div>
+
+<div class="menu-item" (mouseenter)="showHoverMenu('profilesetting')" (mouseleave)="hideHoverMenu('profilesetting')">
+  <div class="title" (click)="toggleSubmenu('profilesetting')">
+    <i class="fa-solid fa-user-cog"></i> <!-- Updated Icon -->
+    <p *ngIf="!isCollapsed">Profile Setting</p>
+    <i *ngIf="!isCollapsed" class="fa-solid" [ngClass]="{ 'fa-chevron-right': !showSubmenu['profilesetting'], 'fa-chevron-down': showSubmenu['profilesetting'] }"></i>
+  </div>
+  <div class="sub-menu" *ngIf="showSubmenu['profilesetting'] && !isCollapsed">
+    <div class="sub-menu-item">
+      <i class="fa-solid fa-eye"></i>
+      <a routerLink="/admin/profilesetting"><p>Profile setting</p></a>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
